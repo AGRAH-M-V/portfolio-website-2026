@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Light Theme (default) ─── */
+:root {
+  color-scheme: light;
+
+  --color-ink: #111111;
+  --color-paper: #FFFFFF;
+  --color-surface: #F7F7F7;
+  --color-line: #EAEAEA;
+  --color-muted: #666666;
+  --color-accent: #FF5A36;
+  --color-dot: #000000; /* Sharp, high-contrast dot for light mode */
+
+  --shadow-soft: rgba(0, 0, 0, 0.03);
+
+  --selection-bg: #111111;
+  --selection-fg: #FFFFFF;
+
+  --scrollbar-track: #FFFFFF;
+  --scrollbar-thumb: #EAEAEA;
+  --scrollbar-thumb-hover: #CCCCCC;
+}
+
+/* ─── Dark Theme ─── */
+html.dark {
+  color-scheme: dark;
+
+  --color-ink: #EDEDED;
+  --color-paper: #0A0A0A;
+  --color-surface: #141414;
+  --color-line: #222222;
+  --color-muted: #888888;
+  --color-accent: #FF6B4A;
+  --color-dot: #555555; /* Visible, sharp dot for dark mode */
+
+  --shadow-soft: rgba(0, 0, 0, 0.25);
+
+  --selection-bg: #EDEDED;
+  --selection-fg: #0A0A0A;
+
+  --scrollbar-track: #0A0A0A;
+  --scrollbar-thumb: #222222;
+  --scrollbar-thumb-hover: #333333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-paper);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-paper);
+  background-image: radial-gradient(circle at 1.5px 1.5px, var(--color-dot) 1px, transparent 0);
+  background-size: 120px 120px; /* Huge spacing for that specific Nothing aesthetic */
+  background-position: 0 0;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Nothing-inspired minimal panels */
+.panel {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+}
+
+/* Utility to add a stark line */
+.structural-line {
+  position: relative;
+}
+.structural-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-line);
+}
+
+/* Smooth theme transition */
+html,
+html body,
+html header,
+html section,
+html div,
+html a,
+html span,
+html p,
+html h1, html h2, html h3 {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
