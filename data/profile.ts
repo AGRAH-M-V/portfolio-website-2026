@@ -6,8 +6,6 @@ import {
   GitBranch,
   Linkedin,
   Mail,
-  MapPin,
-  Phone,
   ServerCog,
   ShieldCheck,
   Sparkles,

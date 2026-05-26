@@ -158,7 +158,7 @@ export function ContactSection() {
     <section id="contact" className="mb-12">
       <SectionHeader title="Connect" />
       <div className="border border-line rounded-[3px] bg-paper p-6 sm:p-10">
-        <h3 className="font-sans text-2xl font-bold text-ink mb-4">Let's build something robust.</h3>
+        <h3 className="font-sans text-2xl font-bold text-ink mb-4">Let&apos;s build something robust.</h3>
         <p className="font-sans text-base text-muted mb-8 max-w-lg leading-relaxed">
           Need a backend engineer who can design, debug, and maintain complex systems? Feel free to reach out.
         </p>

@@ -1,5 +1,5 @@
 import { profile } from "@/data/profile";
-import { ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 export function Hero() {
   return (
