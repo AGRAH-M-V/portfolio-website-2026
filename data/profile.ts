@@ -163,3 +163,10 @@ export const contributions = [
   "Improved reliability and data consistency across distributed microservices.",
   "Enhanced operational efficiency through automation, scheduled jobs, and support tooling.",
 ];
+
+export const currentlyExploring = [
+  "AI workflow orchestration",
+  "Prompt evaluation systems",
+  "Backend observability patterns",
+  "gRPC service optimization"
+];
