@@ -34,7 +34,7 @@ html.dark {
   --color-line: #222222;
   --color-muted: #888888;
   --color-accent: #FF6B4A;
-  --color-dot: #555555; /* Visible, sharp dot for dark mode */
+  --color-dot: #737373; /* Increased contrast for dot in dark mode */
 
   --shadow-soft: rgba(0, 0, 0, 0.25);
 
@@ -60,9 +60,9 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-color: var(--color-paper);
-  background-image: radial-gradient(circle at 1.5px 1.5px, var(--color-dot) 1px, transparent 0);
-  background-size: 120px 120px; /* Huge spacing for that specific Nothing aesthetic */
-  background-position: 0 0;
+  background-image: radial-gradient(circle at 1.5px 1.5px, var(--color-dot) 1.5px, transparent 0);
+  background-size: 80px 80px; /* Tighter spacing for improved visual rhythm */
+  background-position: center top;
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
