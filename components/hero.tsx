@@ -22,18 +22,18 @@ export function Hero() {
           Available for opportunities
         </div>
         
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-sans font-bold tracking-tighter text-ink leading-[1.1] mb-6">
+        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter text-ink leading-[1.05] mb-8">
           {profile.name}
         </h1>
         
-        <p className="text-xl sm:text-2xl font-sans text-muted leading-snug mb-10 text-balance">
+        <p className="text-xl sm:text-2xl lg:text-3xl font-sans text-muted leading-snug mb-12 text-balance font-light">
           {profile.summary}
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
           <a
             href="#projects"
-            className="flex items-center gap-2 font-sans text-sm font-semibold text-paper bg-ink px-6 py-3 rounded-[3px] hover:bg-ink/90 transition-colors"
+            className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-paper bg-ink px-6 py-3 rounded-[3px] hover:bg-ink/90 transition-colors"
           >
             View Systems
           </a>
@@ -41,7 +41,7 @@ export function Hero() {
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 font-sans text-sm font-semibold text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line transition-colors"
+            className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line transition-colors"
           >
             <Linkedin size={16} /> LinkedIn
           </a>
@@ -49,7 +49,7 @@ export function Hero() {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 font-sans text-sm font-semibold text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line transition-colors"
+            className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line transition-colors"
           >
             <Github size={16} /> GitHub
           </a>

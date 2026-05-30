@@ -12,7 +12,7 @@
   --color-line: #D9D9D9;
   --color-muted: #555555;
   --color-accent: #FF5A36;
-  --color-dot: #000000; /* Sharp, high-contrast dot for light mode */
+  --color-dot: rgba(0, 0, 0, 0.15); /* Visible dot for light mode */
 
   --shadow-soft: rgba(0, 0, 0, 0.03);
 
@@ -34,7 +34,7 @@ html.dark {
   --color-line: #222222;
   --color-muted: #888888;
   --color-accent: #FF6B4A;
-  --color-dot: #737373; /* Increased contrast for dot in dark mode */
+  --color-dot: rgba(255, 255, 255, 0.1); /* Visible dot in dark mode */
 
   --shadow-soft: rgba(0, 0, 0, 0.25);
 
@@ -61,7 +61,7 @@ body {
   overflow-x: hidden;
   background-color: var(--color-paper);
   background-image: radial-gradient(circle at 1.5px 1.5px, var(--color-dot) 1.5px, transparent 0);
-  background-size: 80px 80px; /* Tighter spacing for improved visual rhythm */
+  background-size: 32px 32px; /* Denser grid for visibility */
   background-position: center top;
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
