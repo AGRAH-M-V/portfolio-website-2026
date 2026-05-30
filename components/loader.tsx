@@ -42,7 +42,7 @@ export function Loader() {
                   <motion.div
                     key={i}
                     className={`w-2.5 h-2.5 rounded-full ${
-                      isCenter ? "bg-[#f50514]" : "bg-white"
+                      isCenter ? "bg-[#FF6B4A]" : "bg-white"
                     }`}
                     initial={{ opacity: 0.1, scale: 0.5 }}
                     animate={{
@@ -73,7 +73,7 @@ export function Loader() {
               </span>
               {/* Blinking red recording dot */}
               <motion.div
-                className="w-1.5 h-1.5 rounded-full bg-[#f50514]"
+                className="w-1.5 h-1.5 rounded-full bg-[#FF6B4A]"
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               />
