@@ -14,14 +14,14 @@ import {
 
 export const profile = {
   name: "Agrah M V",
-  role: "Backend Engineer",
+  role: "Full Stack Developer",
   location: "Kerala, India",
   email: "agrahmv@gmail.com",
   phone: "9946803371",
   linkedin: "https://linkedin.com/in/agrah-mv",
   github: "https://github.com/AGRAH-M-V",
   summary:
-    "Backend Engineer with 2+ years of experience building scalable Spring Boot microservices, REST APIs, and production-grade distributed systems. Focused on reliability, clean architecture, and practical problem-solving.",
+    "Full Stack Developer with 2+ years of experience building scalable Spring Boot microservices, REST APIs, and production-grade distributed systems. Focused on reliability, clean architecture, and practical problem-solving.",
   focus: [
     "Building systems that are easy to support",
     "Production debugging and reliability",
@@ -38,7 +38,7 @@ export const socials = [
 
 export const skillGroups = [
   {
-    title: "Backend Development",
+    title: "Full Stack Development",
     icon: ServerCog,
     skills: ["Java", "Spring Boot", "REST APIs", "Microservices", "gRPC", "JPA", "Authentication & Security", "JUnit5"],
   },

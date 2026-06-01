@@ -18,9 +18,9 @@ const config: Config = {
         accent: "var(--color-accent)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
-        display: ["var(--font-space)", "var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
+        sans: ["Consolas", "'Courier New'", "monospace"],
+        display: ["Consolas", "'Courier New'", "monospace"],
+        mono: ["Consolas", "'Courier New'", "monospace"],
       },
       boxShadow: {
         soft: "0 4px 20px var(--shadow-soft)",
@@ -33,6 +33,15 @@ const config: Config = {
         wide: "0.02em",
         wider: "0.04em",
         widest: "0.1em",
+      },
+      keyframes: {
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
+      },
+      animation: {
+        blink: "blink 1s step-end infinite",
       },
     },
   },

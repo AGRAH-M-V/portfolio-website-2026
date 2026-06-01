@@ -10,7 +10,7 @@ export function Loader() {
     // Hide loader after a short delay
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 1200);
     return () => clearTimeout(timer);
   }, []);
 
