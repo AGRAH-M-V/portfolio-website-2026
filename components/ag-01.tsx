@@ -23,6 +23,7 @@ export function AG01() {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [isBlinking, setIsBlinking] = useState(false);
+  const [isPetting, setIsPetting] = useState(false);
   
   // Custom temporary terminal message (e.g. on scroll sections or click)
   const [customMessage, setCustomMessage] = useState<string | null>(null);
@@ -36,12 +37,23 @@ export function AG01() {
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
 
-  // Setup mount & screen check
+  // Setup mount & screen check & Time awareness
   useEffect(() => {
     setMounted(true);
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener("resize", checkMobile);
+    
+    // Time Awareness
+    const hour = new Date().getHours();
+    if (hour >= 22 || hour < 4) {
+      setEmotion("sleepy");
+      setCustomMessage("> Late night coding session?");
+    } else if (hour >= 5 && hour <= 9) {
+      setEmotion("happy");
+      setCustomMessage("> Good morning, System booted");
+    }
+    
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -49,13 +61,13 @@ export function AG01() {
 
   // Clear custom message after 4.5 seconds
   useEffect(() => {
-    if (!customMessage) return;
+    if (!customMessage || isPetting) return;
     const timer = setTimeout(() => {
       setCustomMessage(null);
       setEmotion("idle");
     }, 4500);
     return () => clearTimeout(timer);
-  }, [customMessage]);
+  }, [customMessage, isPetting]);
 
   // Velocity scroll tracking
   useEffect(() => {
@@ -274,6 +286,20 @@ export function AG01() {
           style={{
             backgroundImage: "radial-gradient(#FF8A65 1.5px, transparent 1.5px)",
             backgroundSize: "16px 16px"
+          }}
+        />
+
+        {/* Hover Petting Zone */}
+        <div 
+          className="absolute -top-6 left-1/2 -translate-x-1/2 w-40 h-20 bg-transparent z-50 cursor-pointer"
+          onMouseEnter={() => {
+            setIsPetting(true);
+            setEmotion("happy");
+            setCustomMessage("> Enjoying head pats...");
+          }}
+          onMouseLeave={() => {
+            setIsPetting(false);
+            setCustomMessage("> Systems purring...");
           }}
         />
 
