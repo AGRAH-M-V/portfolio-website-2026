@@ -7,10 +7,17 @@ export function Loader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Disable automatic scroll restoration and force scroll to top
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     // Hide loader after a short delay
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1200);
+    
     return () => clearTimeout(timer);
   }, []);
 
@@ -20,7 +27,13 @@ export function Loader() {
   const dots = Array.from({ length: rows * cols }, (_, i) => i);
 
   return (
-    <AnimatePresence>
+    <>
+      {loading && (
+        <style dangerouslySetInnerHTML={{ __html: `
+          html, body { overflow: hidden !important; }
+        `}} />
+      )}
+      <AnimatePresence>
       {loading && (
         <motion.div
           key="loader"
@@ -82,5 +95,6 @@ export function Loader() {
         </motion.div>
       )}
     </AnimatePresence>
+    </>
   );
 }
