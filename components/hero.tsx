@@ -4,7 +4,6 @@ import { profile } from "@/data/profile";
 import { Github, Linkedin } from "lucide-react";
 import { FadeIn } from "./scroll-animate";
 import { useState, useEffect } from "react";
-import { AG01 } from "./ag-01";
 
 const roles = [
   "Building reliable systems",
@@ -50,13 +49,6 @@ export function Hero() {
 
   return (
     <section className="relative pt-8 lg:pt-14 pb-10 border-b border-line overflow-hidden">
-      {/* AG-01 Companion Robot */}
-      <div className="absolute right-10 xl:right-20 top-1/2 -translate-y-1/2 hidden lg:block z-0 pointer-events-auto scale-90 xl:scale-100 origin-right">
-        <FadeIn delay={0.8} direction="up" noScroll>
-          <AG01 />
-        </FadeIn>
-      </div>
-
       <div className="max-w-3xl relative z-10">
         <FadeIn delay={0.1} direction="none" noScroll>
           <div className="flex flex-wrap items-center gap-4 mb-6">
