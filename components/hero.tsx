@@ -49,9 +49,9 @@ export function Hero() {
 
   return (
     <section className="relative pt-8 lg:pt-14 pb-10 border-b border-line overflow-hidden">
-      <div className="max-w-3xl relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center text-center">
         <FadeIn delay={0.1} direction="none" noScroll>
-          <div className="flex flex-wrap items-center gap-4 mb-6">
+          <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
             <div className="flex items-center gap-3">
               <span className="w-8 h-px bg-ink" />
               <span className="font-mono text-xs font-semibold tracking-widest uppercase text-muted">
@@ -72,7 +72,7 @@ export function Hero() {
         </FadeIn>
 
         <FadeIn delay={0.4} direction="up" noScroll>
-          <div className="h-8 mb-8 flex items-center overflow-hidden">
+          <div className="h-8 mb-8 flex justify-center items-center overflow-hidden">
             <span className="text-accent font-mono text-sm font-semibold mr-2">›</span>
             <span className="font-mono text-sm text-muted">
               {text}
@@ -88,7 +88,7 @@ export function Hero() {
         </FadeIn>
 
         <FadeIn delay={0.65} direction="up" noScroll>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap justify-center items-center gap-4">
             <a
               href="#projects"
               className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-paper bg-ink px-6 py-3 rounded-[3px] hover:bg-ink/90 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300"
