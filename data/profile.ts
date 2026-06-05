@@ -3,9 +3,6 @@ import {
   Bot,
   Code2,
   Database,
-  GitBranch,
-  Linkedin,
-  Mail,
   ServerCog,
   ShieldCheck,
   Sparkles,
@@ -18,6 +15,7 @@ export const profile = {
   location: "Kerala, India",
   email: "agrahmv@gmail.com",
   phone: "9946803371",
+  whatsapp: "https://wa.me/919946803371",
   linkedin: "https://linkedin.com/in/agrah-mv",
   github: "https://github.com/AGRAH-M-V",
   summary:
@@ -29,12 +27,6 @@ export const profile = {
     "Automating repetitive engineering effort",
   ],
 };
-
-export const socials = [
-  { label: "Email", href: `mailto:${profile.email}`, icon: Mail },
-  { label: "LinkedIn", href: profile.linkedin, icon: Linkedin },
-  { label: "GitHub", href: profile.github, icon: GitBranch },
-];
 
 export const skillGroups = [
   {

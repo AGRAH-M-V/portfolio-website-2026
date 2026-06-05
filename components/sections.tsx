@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import { contributions, education, experience, principles, projects, skillGroups, socials, profile, currentlyExploring } from "@/data/profile";
+import { contributions, education, experience, principles, projects, skillGroups, profile, currentlyExploring } from "@/data/profile";
 import { FadeIn, StaggerContainer, staggerItem } from "./scroll-animate";
 
 const sectionNumbers: Record<string, string> = {
@@ -231,12 +231,12 @@ export function ContactSection() {
             Need a full stack developer who can design, debug, and maintain complex systems? Feel free to reach out.
           </p>
 
-          <div className="flex flex-wrap gap-4 mb-12">
+          <div className="flex flex-wrap gap-4">
             <a
               href={`mailto:${profile.email}`}
               className="font-sans text-sm font-semibold text-paper bg-ink px-6 py-3 rounded-[3px] hover:bg-ink/90 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 flex items-center gap-2"
             >
-              Send an Email <ArrowUpRight size={16} />
+              <Mail size={16} /> Email <ArrowUpRight size={16} />
             </a>
             <a
               href={profile.linkedin}
@@ -244,26 +244,24 @@ export function ContactSection() {
               rel="noreferrer"
               className="font-sans text-sm font-semibold text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300 flex items-center gap-2"
             >
-              LinkedIn <ArrowUpRight size={16} />
+              <Linkedin size={16} /> LinkedIn <ArrowUpRight size={16} />
             </a>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-line pt-8">
-            {socials.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={i}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="flex items-center gap-2 font-sans text-sm font-medium text-muted hover:text-accent transition-colors"
-                >
-                  <Icon size={16} />
-                  <span className="truncate">{item.label}</span>
-                </a>
-              );
-            })}
+            <a
+              href={profile.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="font-sans text-sm font-semibold text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300 flex items-center gap-2"
+            >
+              <MessageCircle size={16} /> WhatsApp <ArrowUpRight size={16} />
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              className="font-sans text-sm font-semibold text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300 flex items-center gap-2"
+            >
+              <Github size={16} /> GitHub <ArrowUpRight size={16} />
+            </a>
           </div>
         </div>
       </FadeIn>
