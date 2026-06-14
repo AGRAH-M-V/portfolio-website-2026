@@ -3,6 +3,7 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { sendGAEvent } from "@next/third-parties/google";
 
 const navItems = [
   { label: "Experience", href: "#work" },
@@ -65,6 +66,7 @@ export function Nav() {
           <div className="flex items-center gap-3">
             <a
               href="mailto:agrahmv@gmail.com"
+              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'email_nav_desktop' })}
               className="hidden sm:flex items-center gap-1.5 font-display tracking-wide uppercase text-[11px] font-bold text-ink bg-surface border border-line px-3 py-1.5 hover:bg-line hover:border-accent/30 transition-all duration-300 rounded-[3px]"
             >
               Connect <ArrowUpRight size={14} />
@@ -116,7 +118,10 @@ export function Nav() {
               ))}
               <motion.a
                 href="mailto:agrahmv@gmail.com"
-                onClick={handleNavClick}
+                onClick={(e) => {
+                  handleNavClick();
+                  sendGAEvent({ event: 'social_link_click', value: 'email_nav_mobile' });
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 + navItems.length * 0.08 }}

@@ -2,6 +2,7 @@
 
 import { profile } from "@/data/profile";
 import { Github, Linkedin } from "lucide-react";
+import { sendGAEvent } from "@next/third-parties/google";
 import { FadeIn } from "./scroll-animate";
 import { useState, useEffect } from "react";
 
@@ -99,6 +100,7 @@ export function Hero() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
+              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'linkedin_hero' })}
               className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300"
             >
               <Linkedin size={16} /> LinkedIn
@@ -107,6 +109,7 @@ export function Hero() {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
+              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'github_hero' })}
               className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300"
             >
               <Github size={16} /> GitHub

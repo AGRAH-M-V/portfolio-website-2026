@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { sendGAEvent } from "@next/third-parties/google";
 import { contributions, education, experience, principles, projects, skillGroups, profile, currentlyExploring } from "@/data/profile";
 import { FadeIn, StaggerContainer, staggerItem } from "./scroll-animate";
 
@@ -234,6 +235,7 @@ export function ContactSection() {
           <div className="flex flex-wrap gap-4">
             <a
               href={`mailto:${profile.email}`}
+              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'email_contact' })}
               className="font-sans text-sm font-semibold text-paper bg-ink px-6 py-3 rounded-[3px] hover:bg-ink/90 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 flex items-center gap-2"
             >
               <Mail size={16} /> Email <ArrowUpRight size={16} />
@@ -242,6 +244,7 @@ export function ContactSection() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
+              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'linkedin_contact' })}
               className="font-sans text-sm font-semibold text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300 flex items-center gap-2"
             >
               <Linkedin size={16} /> LinkedIn <ArrowUpRight size={16} />
@@ -250,6 +253,7 @@ export function ContactSection() {
               href={profile.whatsapp}
               target="_blank"
               rel="noreferrer"
+              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'whatsapp_contact' })}
               className="font-sans text-sm font-semibold text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300 flex items-center gap-2"
             >
               <MessageCircle size={16} /> WhatsApp <ArrowUpRight size={16} />
@@ -258,6 +262,7 @@ export function ContactSection() {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
+              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'github_contact' })}
               className="font-sans text-sm font-semibold text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300 flex items-center gap-2"
             >
               <Github size={16} /> GitHub <ArrowUpRight size={16} />
