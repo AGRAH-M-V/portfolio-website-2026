@@ -56,12 +56,12 @@ langfuseClient.on("error", (err) => {
   console.error("Langfuse Background Error:", err);
 });
 
+// langfuseClient is kept for custom error handling/debug if needed globally.
+// observeOpenAI will use its own internal client config from environment variables.
 const openai = observeOpenAI(new OpenAI({
   apiKey: process.env.GROQ_API_KEY,
   baseURL: 'https://api.groq.com/openai/v1',
-}), {
-  client: langfuseClient
-});
+}));
 
 export async function POST(req: NextRequest) {
   try {
@@ -137,6 +137,7 @@ export async function POST(req: NextRequest) {
 
     const stream = OpenAIStream(response, {
       onCompletion: async () => {
+        await openai.flushAsync();
         await langfuseClient.flushAsync();
       }
     });
