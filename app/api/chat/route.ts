@@ -66,7 +66,7 @@ const openai = observeOpenAI(new OpenAI({
 export async function POST(req: NextRequest) {
   try {
     // 1. Rate Limiting (Secure IP resolution)
-    const ip = req.ip ?? req.headers.get('x-real-ip') ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? '127.0.0.1';
+    const ip = req.headers.get('x-real-ip') ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? '127.0.0.1';
     console.log(`[Rate Limit] User IP: ${ip}`);
     if (!checkRateLimit(ip)) {
       return new Response(JSON.stringify({ error: "Too many requests. Please try again later." }), { status: 429 });
@@ -135,7 +135,8 @@ export async function POST(req: NextRequest) {
       messages: [{ role: 'system', content: systemPrompt }, ...trimmedMessages],
     });
 
-    const stream = OpenAIStream(response, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const stream = OpenAIStream(response as any, {
       onCompletion: async () => {
         await openai.flushAsync();
         await langfuseClient.flushAsync();

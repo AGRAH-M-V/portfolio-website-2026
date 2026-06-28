@@ -1,7 +1,7 @@
 "use client";
 
 import { profile } from "@/data/profile";
-import { Github, Linkedin, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { sendGAEvent } from "@next/third-parties/google";
 import { FadeIn } from "./ui/scroll-animate";
 import { useState, useEffect } from "react";
