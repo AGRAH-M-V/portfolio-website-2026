@@ -10,11 +10,16 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.2.9",
+    "ai": "^3.4.33",
     "framer-motion": "^11.18.2",
+    "langfuse": "^3.38.20",
     "lucide-react": "^0.468.0",
     "next": "^15.3.2",
+    "openai": "^4.104.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-markdown": "^10.1.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",
@@ -25,6 +30,7 @@
     "eslint-config-next": "^15.3.2",
     "globals": "^15.15.0",
     "postcss": "^8.5.6",
+    "promptfoo": "^0.121.17",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3"
   }

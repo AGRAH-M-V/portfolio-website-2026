@@ -4,6 +4,8 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sendGAEvent } from "@next/third-parties/google";
+import { profile } from "@/data/profile";
+import { useBodyScrollLock } from "@/hooks/use-body-scroll-lock";
 
 const navItems = [
   { label: "Experience", href: "#work" },
@@ -23,14 +25,7 @@ export function Nav() {
   }, []);
 
   // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
+  useBodyScrollLock(mobileOpen);
 
   const handleNavClick = () => {
     setMobileOpen(false);
@@ -39,46 +34,48 @@ export function Nav() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 bg-paper/80 backdrop-blur-md border-b transition-all duration-300 ${
-          scrolled ? "border-line shadow-lg shadow-paper/50" : "border-line/50"
+        className={`sticky top-0 lg:fixed lg:left-0 lg:top-0 z-50 bg-paper lg:bg-paper border-b-2 lg:border-b-0 lg:border-r-4 border-ink transition-all duration-300 lg:w-64 lg:h-screen ${
+          scrolled ? "shadow-[0px_4px_0px_0px_var(--color-ink)] lg:shadow-none" : ""
         }`}
       >
-        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 font-mono text-sm font-semibold tracking-tighter text-ink uppercase">
-            <div className="w-2 h-2 bg-accent rounded-sm" />
+        <div className="mx-auto max-w-[1200px] lg:max-w-none px-4 sm:px-6 lg:px-8 h-16 lg:h-full flex lg:flex-col items-center lg:items-start justify-between lg:py-12">
+          <a href="#" className="flex items-center gap-2 font-display text-xl font-black tracking-tighter text-ink uppercase">
+            <div className="w-3 h-3 bg-accent border-2 border-ink shadow-[2px_2px_0px_0px_var(--color-ink)]" />
             Agrah M V
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 font-display text-sm font-bold tracking-wide uppercase text-muted">
+          <nav className="hidden lg:flex lg:flex-col items-center lg:items-start gap-8 lg:gap-6 font-display text-lg font-black tracking-widest uppercase text-muted lg:mt-12 lg:w-full">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="hover:text-ink transition-colors relative group"
+                className="hover:text-ink hover:translate-x-1 transition-transform relative group lg:w-full lg:flex lg:items-center"
               >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
+                <span className="lg:pl-4">{item.label}</span>
+                {/* Horizontal line for top nav, vertical line for sidebar */}
+                <span className="absolute -bottom-1 left-0 w-0 h-1 lg:hidden bg-accent group-hover:w-full transition-all duration-300" />
+                <span className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-2 h-0 bg-accent border-y-2 border-r-2 border-ink group-hover:h-full transition-all duration-300" />
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center lg:items-start gap-3 lg:mt-auto lg:w-full">
             <a
-              href="mailto:agrahmv@gmail.com"
+              href={`mailto:${profile.email}`}
               onClick={() => sendGAEvent({ event: 'social_link_click', value: 'email_nav_desktop' })}
-              className="hidden sm:flex items-center gap-1.5 font-display tracking-wide uppercase text-[11px] font-bold text-ink bg-surface border border-line px-3 py-1.5 hover:bg-line hover:border-accent/30 transition-all duration-300 rounded-[3px]"
+              className="hidden sm:flex lg:w-full items-center lg:justify-center gap-2 font-display tracking-widest uppercase text-xs font-black text-ink bg-surface px-4 py-2 lg:py-4 pill-hover"
             >
-              Connect <ArrowUpRight size={14} />
+              Connect <ArrowUpRight size={16} strokeWidth={3} />
             </a>
 
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden flex items-center justify-center w-9 h-9 rounded-[3px] bg-surface border border-line hover:bg-line transition-colors"
+              className="lg:hidden flex items-center justify-center w-10 h-10 bg-accent border-2 border-ink shadow-[2px_2px_0px_0px_var(--color-ink)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+              {mobileOpen ? <X size={20} strokeWidth={2.5} className="text-ink" /> : <Menu size={20} strokeWidth={2.5} className="text-ink" />}
             </button>
           </div>
         </div>
@@ -92,7 +89,7 @@ export function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-paper/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 bg-paper lg:hidden"
             onClick={() => setMobileOpen(false)}
           >
             <motion.nav
@@ -111,23 +108,23 @@ export function Nav() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 + i * 0.08 }}
-                  className="font-display text-3xl font-black tracking-tight text-ink hover:text-accent transition-colors"
+                  className="font-display text-4xl font-black tracking-tight text-ink hover:translate-x-2 transition-transform"
                 >
                   {item.label}
                 </motion.a>
               ))}
               <motion.a
-                href="mailto:agrahmv@gmail.com"
-                onClick={(e) => {
+                href={`mailto:${profile.email}`}
+                onClick={() => {
                   handleNavClick();
                   sendGAEvent({ event: 'social_link_click', value: 'email_nav_mobile' });
                 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 + navItems.length * 0.08 }}
-                className="mt-4 flex items-center gap-2 font-display text-sm font-bold tracking-wide uppercase text-paper bg-accent px-8 py-4 rounded-[3px] hover:bg-accent/90 transition-colors"
+                className="mt-8 flex items-center gap-2 font-display text-sm font-black tracking-widest uppercase text-paper bg-ink px-10 py-5 shadow-[4px_4px_0px_0px_var(--color-accent)]"
               >
-                Connect <ArrowUpRight size={16} />
+                Connect <ArrowUpRight size={20} strokeWidth={3} />
               </motion.a>
             </motion.nav>
           </motion.div>

@@ -18,13 +18,13 @@ const config: Config = {
         accent: "var(--color-accent)",
       },
       fontFamily: {
-        sans: ["Consolas", "'Courier New'", "monospace"],
-        display: ["Consolas", "'Courier New'", "monospace"],
-        mono: ["Consolas", "'Courier New'", "monospace"],
+        sans: ["var(--font-space)", "sans-serif"],
+        display: ["var(--font-space)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       boxShadow: {
-        soft: "0 4px 20px var(--shadow-soft)",
-        border: "0 0 0 1px var(--color-line)",
+        neo: "4px 4px 0px 0px var(--color-ink)",
+        "neo-hover": "2px 2px 0px 0px var(--color-ink)",
       },
       letterSpacing: {
         tighter: "-0.04em",

@@ -1,9 +1,9 @@
 "use client";
 
 import { profile } from "@/data/profile";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, FileText } from "lucide-react";
 import { sendGAEvent } from "@next/third-parties/google";
-import { FadeIn } from "./scroll-animate";
+import { FadeIn } from "./ui/scroll-animate";
 import { useState, useEffect } from "react";
 
 const roles = [
@@ -49,74 +49,64 @@ export function Hero() {
   }, [text, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <section className="relative pt-8 lg:pt-14 pb-10 border-b border-line overflow-hidden">
-      <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center text-center">
+    <section className="relative pt-2 lg:pt-4 pb-10 border-b border-line overflow-hidden">
+      <div className="w-full relative z-10 flex flex-col items-start text-left">
         <FadeIn delay={0.1} direction="none" noScroll>
-          <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
+          <div className="flex flex-wrap justify-start items-center gap-4 mb-6">
             <div className="flex items-center gap-3">
               <span className="w-8 h-px bg-ink" />
               <span className="font-mono text-xs font-semibold tracking-widest uppercase text-muted">
                 {profile.role} · {profile.location}
               </span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-xs font-semibold uppercase text-muted">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-dot" />
-              Available for opportunities
+            <div className="flex items-center gap-2 font-mono text-xs font-black uppercase text-ink px-2 py-1 bg-accent border-2 border-ink shadow-[2px_2px_0px_0px_var(--color-ink)]">
+              AVAILABLE FOR OPPORTUNITIES
             </div>
           </div>
         </FadeIn>
 
         <FadeIn delay={0.25} direction="up" noScroll>
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[1.05] mb-4 gradient-text">
+          <h1 className="text-6xl sm:text-7xl lg:text-9xl font-display font-black tracking-tighter leading-[0.95] mb-4 text-ink uppercase">
             {profile.name}
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.4} direction="up" noScroll>
-          <div className="h-8 mb-8 flex justify-center items-center overflow-hidden">
-            <span className="text-accent font-mono text-sm font-semibold mr-2">›</span>
-            <span className="font-mono text-sm text-muted">
+          <div className="h-10 mb-8 flex justify-start items-center overflow-hidden bg-ink text-paper px-4 border-2 border-ink shadow-[4px_4px_0px_0px_var(--color-ink)]">
+            <span className="text-accent font-mono text-sm font-bold mr-2">{'>'}</span>
+            <span className="font-mono text-sm font-bold uppercase tracking-wider">
               {text}
-              <span className="animate-blink text-accent ml-0.5">_</span>
+              <span className="text-accent ml-0.5 animate-pulse">_</span>
             </span>
           </div>
         </FadeIn>
 
         <FadeIn delay={0.5} direction="up" noScroll>
-          <p className="text-xl sm:text-2xl lg:text-3xl font-sans text-muted leading-snug mb-12 text-balance font-light">
+          <p className="text-xl sm:text-2xl lg:text-3xl font-sans text-ink leading-snug mb-12 text-balance font-medium max-w-3xl border-l-4 border-ink pl-6">
             {profile.summary}
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.65} direction="up" noScroll>
-          <div className="flex flex-wrap justify-center items-center gap-4">
+        <FadeIn delay={0.65} direction="up" noScroll className="w-full">
+          <div className="flex flex-wrap items-center gap-4 w-full">
             <a
               href="#projects"
-              className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-paper bg-ink px-6 py-3 rounded-[3px] hover:bg-ink/90 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300"
+              className="flex items-center gap-2 font-display text-sm font-black tracking-widest uppercase text-paper bg-ink px-8 py-4 pill-hover"
             >
               View Systems
             </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'linkedin_hero' })}
-              className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300"
-            >
-              <Linkedin size={16} /> LinkedIn
-            </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => sendGAEvent({ event: 'social_link_click', value: 'github_hero' })}
-              className="flex items-center gap-2 font-display text-xs font-bold tracking-wide uppercase text-ink bg-surface border border-line px-6 py-3 rounded-[3px] hover:bg-line hover:border-accent/30 transition-all duration-300"
-            >
-              <Github size={16} /> GitHub
-            </a>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
+              <a
+                href="/Agrah%20MV-FullStack%20Developer-Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => sendGAEvent({ event: 'social_link_click', value: 'resume_hero' })}
+                className="flex items-center gap-2 font-display text-sm font-black tracking-widest uppercase text-ink bg-surface px-8 py-4 pill-hover"
+              >
+                <FileText size={20} strokeWidth={2.5} /> Resume
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
   );
 }

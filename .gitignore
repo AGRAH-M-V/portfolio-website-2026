@@ -8,3 +8,8 @@ dist
 !.env.example
 *.tsbuildinfo
 .DS_Store
+
+# Promptfoo testing artifacts
+promptfooconfig.yaml
+redteam.yaml
+chat-provider.js

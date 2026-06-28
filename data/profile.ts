@@ -4,8 +4,6 @@ import {
   Code2,
   Database,
   ServerCog,
-  ShieldCheck,
-  Sparkles,
   TerminalSquare,
 } from "lucide-react";
 
@@ -19,7 +17,7 @@ export const profile = {
   linkedin: "https://linkedin.com/in/agrah-mv",
   github: "https://github.com/AGRAH-M-V",
   summary:
-    "Full Stack Developer with 2+ years of experience building scalable Spring Boot microservices, REST APIs, and production-grade distributed systems. Focused on reliability, clean architecture, and practical problem-solving.",
+    "Full Stack Developer with 3 years of experience building scalable Spring Boot microservices, REST APIs, and production-grade distributed systems. Focused on reliability, clean architecture, and practical problem-solving.",
   focus: [
     "Building systems that are easy to support",
     "Production debugging and reliability",
@@ -80,7 +78,6 @@ export const projects = [
   {
     title: "Cargo Planning Decision Support System",
     eyebrow: "Microservices Platform",
-    icon: ShieldCheck,
     stack: ["Java", "Spring Boot", "Microservices", "gRPC", "PostgreSQL", "Angular"],
     bullets: [
       "Developed backend services using Spring Boot and gRPC for cargo, vessel, and voyage management.",
@@ -93,7 +90,6 @@ export const projects = [
   {
     title: "Crew Management Application",
     eyebrow: "Operations Software",
-    icon: Activity,
     stack: ["Spring Boot", "MySQL", "React", "GraphQL"],
     bullets: [
       "Developed backend modules for crew operations including activity logs, medical events, and compliance tracking.",
@@ -105,7 +101,6 @@ export const projects = [
   {
     title: "Billing Application",
     eyebrow: "Workflow Analytics",
-    icon: Database,
     stack: ["Spring Boot", "MongoDB", "Angular"],
     bullets: [
       "Developed backend APIs using Spring Boot and MongoDB for billing workflows and approvals.",
@@ -116,7 +111,6 @@ export const projects = [
   {
     title: "AI YouTube Shorts Generator",
     eyebrow: "AI Agent Workflows",
-    icon: Sparkles,
     stack: ["Python", "CrewAI", "Streamlit", "Groq API", "Prompt Engineering"],
     bullets: [
       "Built a multi-agent AI workflow using CrewAI for automated YouTube Shorts content generation.",
@@ -126,13 +120,6 @@ export const projects = [
       "Integrated Groq/OpenAI APIs for prompt-based content generation workflows.",
     ],
   },
-];
-
-export const principles = [
-  "Build systems that remain understandable.",
-  "Prefer reliability over unnecessary complexity.",
-  "Automate repetitive work.",
-  "Design for maintainability first."
 ];
 
 export const education = [
@@ -148,17 +135,4 @@ export const education = [
     meta: "Built full-stack applications using Spring Boot, React, and REST APIs",
     detail: "Backend-first full-stack training",
   },
-];
-
-export const contributions = [
-  "Reduced recurring production issues with backend fixes and better monitoring visibility.",
-  "Improved reliability and data consistency across distributed microservices.",
-  "Enhanced operational efficiency through automation, scheduled jobs, and support tooling.",
-];
-
-export const currentlyExploring = [
-  "AI workflow orchestration",
-  "Prompt evaluation systems",
-  "Backend observability patterns",
-  "gRPC service optimization"
 ];

@@ -1,10 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
 
 export function Loader() {
   const [loading, setLoading] = useState(true);
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+  const displayPercentage = useTransform(rounded, (latest) => `${latest}%`);
 
   useEffect(() => {
     // Disable automatic scroll restoration and force scroll to top
@@ -14,18 +17,19 @@ export function Loader() {
     window.scrollTo(0, 0);
 
     // Hide loader after a short delay
+    const animation = animate(count, 100, { duration: 1.1, ease: "circOut" });
+
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1200);
     
-    return () => clearTimeout(timer);
-  }, []);
+    return () => {
+      animation.stop();
+      clearTimeout(timer);
+    };
+  }, [count]);
 
-  // 5x5 dot matrix grid
-  const cols = 5;
-  const rows = 5;
-  const dots = Array.from({ length: rows * cols }, (_, i) => i);
-
+    // No dots needed for brutalism
   return (
     <>
       {loading && (
@@ -39,58 +43,37 @@ export function Loader() {
           key="loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a0a]"
+          transition={{ duration: 0.4, ease: "circIn" }}
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-paper"
         >
-          <div className="flex flex-col items-center gap-10">
-            {/* Dot Grid */}
-            <div className="grid grid-cols-5 gap-2.5">
-              {dots.map((i) => {
-                const col = i % cols;
-                const row = Math.floor(i / cols);
-                // Center dot is red, others are white, to mimic Nothing's aesthetic
-                const isCenter = row === 2 && col === 2;
-                
-                return (
-                  <motion.div
-                    key={i}
-                    className={`w-2.5 h-2.5 rounded-full ${
-                      isCenter ? "bg-[#FF6B4A]" : "bg-white"
-                    }`}
-                    initial={{ opacity: 0.1, scale: 0.5 }}
-                    animate={{
-                      opacity: [0.1, 1, 0.1],
-                      scale: [0.5, 1, 0.5],
-                    }}
-                    transition={{
-                      duration: 1.2,
-                      repeat: Infinity,
-                      // Wave effect originating from top-left
-                      delay: (row + col) * 0.1,
-                      ease: "easeInOut",
-                    }}
-                  />
-                );
-              })}
+          <div className="flex flex-col items-start gap-4 w-full max-w-md px-6">
+            
+            <div className="flex items-end justify-between w-full">
+              <span className="text-2xl font-display font-black tracking-tighter text-ink uppercase">
+                Loading System
+              </span>
+              <motion.span 
+                className="text-lg font-mono font-bold text-ink"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.2 }}
+              >
+                {displayPercentage}
+              </motion.span>
             </div>
 
-            {/* Typography */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="flex items-center gap-2"
-            >
-              <span className="text-[10px] font-mono tracking-[0.4em] text-zinc-400 uppercase ml-[0.4em]">
-                Initializing
-              </span>
-              {/* Blinking red recording dot */}
+            {/* Brutalist Progress Bar */}
+            <div className="w-full h-12 bg-paper border-4 border-ink shadow-[8px_8px_0px_0px_var(--color-ink)] p-1.5">
               <motion.div
-                className="w-1.5 h-1.5 rounded-full bg-[#FF6B4A]"
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="h-full bg-accent"
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ 
+                  duration: 1.1, 
+                  ease: "circOut" 
+                }}
               />
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       )}
