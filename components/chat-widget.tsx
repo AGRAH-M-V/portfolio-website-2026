@@ -242,7 +242,13 @@ export function ChatWidget() {
                     }`}
                   >
                     <div className="space-y-2 [&_ul]:list-square [&_ul]:pl-5 [&_a]:text-ink [&_a]:underline [&_a]:decoration-accent [&_a]:decoration-[3px] [&_a]:underline-offset-2 [&_a]:font-bold hover:[&_a]:bg-accent transition-colors">
-                      <ReactMarkdown>
+                      <ReactMarkdown
+                        components={{
+                          a: ({ node, ...props }) => (
+                            <a {...props} target="_blank" rel="noopener noreferrer" />
+                          ),
+                        }}
+                      >
                         {textWithCursor as string}
                       </ReactMarkdown>
                     </div>
