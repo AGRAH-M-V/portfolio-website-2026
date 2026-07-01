@@ -1,4 +1,4 @@
-import { profile, skillGroups, experience, projects, education } from '@/data/profile';
+import { profile, skillGroups, experience, projects, education, hobbyProjects } from '@/data/profile';
 
 export function getSystemPrompt(): string {
   // Format context as clean Markdown to save tokens compared to JSON.stringify
@@ -15,6 +15,12 @@ ${experience.highlights.map(h => `- ${h}`).join('\n')}
 ### ${p.title} (${p.eyebrow})
 **Tech Stack:** ${p.stack.join(', ')}
 ${p.bullets.map(b => `- ${b}`).join('\n')}
+  `).join('\n\n').trim();
+
+  const formattedHobbyProjects = hobbyProjects.map(p => `
+### ${p.title} (Hobby Experiment)
+${p.description}
+Live: [Live Demo](${p.link})
   `).join('\n\n').trim();
 
   const formattedEducation = education.map(e => `
@@ -77,6 +83,9 @@ ${formattedExperience}
 
 # Projects
 ${formattedProjects}
+
+# Hobby Experiments
+${formattedHobbyProjects}
 
 # Education
 ${formattedEducation}

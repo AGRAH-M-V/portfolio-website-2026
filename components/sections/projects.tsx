@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects } from "@/data/profile";
+import { projects, hobbyProjects } from "@/data/profile";
 import { FadeIn } from "../ui/scroll-animate";
 import { SectionHeader } from "../ui/section-header";
 import { useBodyScrollLock } from "@/hooks/use-body-scroll-lock";
@@ -37,6 +37,31 @@ export function ProjectsSection() {
             </button>
           </FadeIn>
         ))}
+      </div>
+
+      <div className="mt-16 sm:mt-24">
+        <h3 className="font-mono text-xl font-black uppercase tracking-widest text-ink mb-8 border-b-4 border-ink pb-4">Hobby Experiments</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {hobbyProjects.map((project, i) => (
+            <FadeIn key={i} delay={i * 0.1}>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block panel p-6 card-hover bg-surface group h-full"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-center gap-3">
+                    {project.icon && <project.icon size={24} strokeWidth={2.5} className="text-ink shrink-0" />}
+                    <h4 className="font-display font-bold text-lg text-ink group-hover:underline decoration-accent decoration-[3px] underline-offset-4">{project.title}</h4>
+                  </div>
+                  <ArrowUpRight size={20} strokeWidth={2.5} className="text-ink group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-transform shrink-0 ml-2" />
+                </div>
+                <p className="font-sans text-sm text-muted">{project.description}</p>
+              </a>
+            </FadeIn>
+          ))}
+        </div>
       </div>
 
       <AnimatePresence>

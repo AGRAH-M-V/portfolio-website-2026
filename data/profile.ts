@@ -5,6 +5,8 @@ import {
   Database,
   ServerCog,
   TerminalSquare,
+  Gamepad2,
+  Trophy,
 } from "lucide-react";
 
 export const profile = {
@@ -134,5 +136,20 @@ export const education = [
     subtitle: "Udemy",
     meta: "Built full-stack applications using Spring Boot, React, and REST APIs",
     detail: "Backend-first full-stack training",
+  },
+];
+
+export const hobbyProjects = [
+  {
+    title: "Memorize",
+    description: "A fun memory card game built to experiment with frontend state management and edge deployments.",
+    link: "https://memorize.agrahmv.workers.dev/",
+    icon: Gamepad2,
+  },
+  {
+    title: "World Cup Fan Vote",
+    description: "An interactive voting application for football fans, exploring real-time databases and web app hosting.",
+    link: "https://worldcupfanvote.web.app/",
+    icon: Trophy,
   },
 ];
